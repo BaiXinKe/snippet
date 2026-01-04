@@ -1,4 +1,4 @@
-class Person {
+export class Person {
     constructor(firstname, lastname, ssn) {
         this._firstname = firstname;
         this._lastname = lastname;
@@ -17,6 +17,10 @@ class Person {
     
     get lastname() {
         return this._lastname;
+    }
+
+    get fullname() {
+        return `${this._firstname} ${this._lastname}`;
     }
     
     get address() {
@@ -89,7 +93,7 @@ const findStudentsBy = function(friends, selector) {
     return friends.filter(selector);
 }
 
-findStudentsBy(['A', 'B', 'C'], selector('USA', 'MIT'));
+// findStudentsBy(['A', 'B', 'C'], selector('USA', 'MIT'));
 
 function zipCode(code, location) {
     let _code = code;
@@ -113,11 +117,11 @@ function zipCode(code, location) {
 }
 
 const princetonZip = zipCode('08544', 'Princeton');
-console.log(princetonZip.toString()); // "08544-Princeton"
+// console.log(princetonZip.toString()); // "08544-Princeton"
 
 const newZip = princetonZip.fromString('12345-NewYork');
-console.log(newZip.code()); // "12345"
-console.log(newZip.location()); // "NewYork"
+// console.log(newZip.code()); // "12345"
+// console.log(newZip.location()); // "NewYork"
 
 function coordinate(lat, long) {
     let _lat = lat;
@@ -176,9 +180,9 @@ var action = function(person) {
     }
 }
 
-printPeople(people, action);
+// printPeople(people, action);
 
-function printPeople(people, selector, printer) {
+function printPeople2(people, selector, printer) {
     people.forEach(function (person) {
         if(selector(person)) {
             printer(person);
@@ -188,7 +192,7 @@ function printPeople(people, selector, printer) {
 
 var inUs = person => person.address.country === 'USA';
 
-printPeople(people, inUs, console.log);
+// printPeople2(people, inUs, console.log);
 
 
 function MyType(arg) {
